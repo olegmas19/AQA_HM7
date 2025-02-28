@@ -81,7 +81,7 @@ class Cart:
     def get_total_price(self) -> float:
         total = 0
         for product, count in self.products.items():
-            total = product.price * count
+            total += product.price * count
         return total
 
 
@@ -93,12 +93,11 @@ class Cart:
         """
 
         for product, count in self.products.items():
-            if count > product.quantity:
-                raise ValueError("Недостаточно товара")
-            else: product.buy(count)
+            if product.quantity < count:
+                raise ValueError("Недостаточно товара " + product.name)
 
-
-
+        for product, count in self.products.items():
+            product.buy(count)
 
 
 
