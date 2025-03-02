@@ -34,7 +34,7 @@ class TestProducts:
 
     def test_product_buy(self, product):
         # TODO напишите проверки на метод buy
-        product[0].buy(1001)
+        product[0].buy(1000)
         product[1].buy(1)
         assert product[0].quantity == 0
         assert product[1].quantity == 499
@@ -74,7 +74,7 @@ class TestCart:
     def test_product_clear_cart(self, cart, product):
         cart.add_product(product[0], 60)
         cart.clear()
-        assert not product in cart.products
+        assert not product[0] in cart.products
 
     def test_product_remove_cart(self, cart, product):
 
